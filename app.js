@@ -66,12 +66,12 @@ if (document.getElementById('map')) {
   // Color mapping for circle marker
   function getColor(level) {
     switch ((level||'').toLowerCase()) {
-      case 'critical': return '#d73027'; // red
-      case 'high': return '#fc8d59';     // orange
-      case 'medium': return '#fee08b';   // yellow
-      case 'low': return '#1a9850';      // green
+      case 'critical': return '#ff0000'; // red
+      case 'high': return '#ff8e00';     // orange
+      case 'medium': return '#fff000';   // yellow
+      case 'low': return '#00ff00';      // green
       case 'no data': return '#888888';  // grey
-      default: return '#888888';         // fallback grey
+      default: return '#ffffff';         // fallback grey
     }
   }
 
@@ -83,9 +83,9 @@ if (document.getElementById('map')) {
         pointToLayer: function (feature, latlng) {
           let lvl = feature.properties?.Level || '';
           return L.circleMarker(latlng, {
-            radius: 10,
+            radius: 8,
             fillColor: getColor(lvl),
-            color: '#222',
+            color: '#ffffff',
             weight: 1,
             opacity: 1,
             fillOpacity: 0.9
