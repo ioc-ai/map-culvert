@@ -81,7 +81,7 @@ if (document.getElementById('map')) {
     .then(data => {
       const culvertLayer = L.geoJSON(data, {
         pointToLayer: function (feature, latlng) {
-          let lvl = feature.properties?.Level || '';
+          let lvl = feature.properties?.level || '';
           return L.circleMarker(latlng, {
             radius: 8,
             fillColor: getColor(lvl),
