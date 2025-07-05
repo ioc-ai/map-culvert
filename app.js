@@ -76,7 +76,7 @@ if (document.getElementById('map')) {
   }
 
   // Load Culverts GeoJSON
-  fetch('culverts.geojson')
+  fetch('./data/culverts_score.geojson')
     .then(resp => resp.json())
     .then(data => {
       const culvertLayer = L.geoJSON(data, {
