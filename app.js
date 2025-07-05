@@ -51,8 +51,8 @@ if (document.getElementById('map')) {
 
   // Map init
   const map = L.map('map', {
-    center: [-2.5, 118], // Indonesia center
-    zoom: 5,
+    center: [-2.225, 115.5], // Indonesia center
+    zoom: 10,
     layers: [googleSat]
   });
 
