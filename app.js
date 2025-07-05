@@ -70,7 +70,7 @@ if (document.getElementById('map')) {
       case 'high': return '#ff8e00';     // orange
       case 'medium': return '#fff000';   // yellow
       case 'low': return '#00ff00';      // green
-      case 'no data': return '#ffffff';  // grey
+      case 'no data': return '#9dc3b6';  // grey
       default: return '#ffffff';         // fallback grey
     }
   }
