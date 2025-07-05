@@ -1,10 +1,25 @@
-/* Optional: Custom style for mobile & centering */
-body, html {
+html, body {
   height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
+  min-width: 100vw;
+  overflow: hidden;
 }
 #map {
-  min-height: 400px;
-}
-.card {
-  margin-top: 20%;
+  position: absolute;
+  top: 56px; /* navbar height */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: calc(100% - 56px);
+  min-height: 200px;
+  margin: 0;
+  padding: 0;
 }
