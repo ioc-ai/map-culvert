@@ -63,13 +63,17 @@ if (document.getElementById('map')) {
   };
   const overlayMaps = {};
 
-  // Custom ICONS
-  const iconMap = {
-    "critical": L.icon({iconUrl:'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png', iconSize:[25,41],iconAnchor:[12,41], popupAnchor:[1,-34]}),
-    "high": L.icon({iconUrl:'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-orange.png', iconSize:[25,41],iconAnchor:[12,41], popupAnchor:[1,-34]}),
-    "medium": L.icon({iconUrl:'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-yellow.png', iconSize:[25,41],iconAnchor:[12,41], popupAnchor:[1,-34]}),
-    "low": L.icon({iconUrl:'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png', iconSize:[25,41],iconAnchor:[12,41], popupAnchor:[1,-34]})
-  };
+  // Color mapping for circle marker
+  function getColor(level) {
+    switch ((level||'').toLowerCase()) {
+      case 'critical': return '#d73027'; // red
+      case 'high': return '#fc8d59';     // orange
+      case 'medium': return '#fee08b';   // yellow
+      case 'low': return '#1a9850';      // green
+      case 'no data': return '#888888';  // grey
+      default: return '#888888';         // fallback grey
+    }
+  }
 
   // Load Culverts GeoJSON
   fetch('culverts.geojson')
@@ -77,9 +81,15 @@ if (document.getElementById('map')) {
     .then(data => {
       const culvertLayer = L.geoJSON(data, {
         pointToLayer: function (feature, latlng) {
-          let lvl = (feature.properties.Level||'').toLowerCase();
-          let icon = iconMap[lvl] || iconMap['low'];
-          return L.marker(latlng, {icon: icon});
+          let lvl = feature.properties?.Level || '';
+          return L.circleMarker(latlng, {
+            radius: 10,
+            fillColor: getColor(lvl),
+            color: '#222',
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.9
+          });
         },
         onEachFeature: function (feature, layer) {
           let props = feature.properties;
