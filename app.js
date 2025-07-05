@@ -70,7 +70,7 @@ if (document.getElementById('map')) {
       case 'high': return '#ff8e00';     // orange
       case 'medium': return '#fff000';   // yellow
       case 'low': return '#00ff00';      // green
-      case 'no data': return '#888888';  // grey
+      case 'no data': return '#ffffff';  // grey
       default: return '#ffffff';         // fallback grey
     }
   }
@@ -86,7 +86,7 @@ if (document.getElementById('map')) {
             radius: 8,
             fillColor: getColor(lvl),
             color: '#ffffff',
-            weight: 1,
+            weight: 2,
             opacity: 1,
             fillOpacity: 0.9
           });
