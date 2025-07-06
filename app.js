@@ -93,7 +93,7 @@ if (document.getElementById('map')) {
         },
         onEachFeature: function (feature, layer) {
           let props = feature.properties;
-          let html = `<strong>ID Culvert:</strong><strong> ${props["ID Culvert"]</strong> || "-"}<br>
+          let html = `<strong>ID Culvert:</strong> ${props["ID Culvert"] || "-"}<br>
             <strong>Mitra Kerja Penanggungjawab:</strong> ${props["Mitra Kerja Responsible"] || "-"}<br>
             <strong>Tanggal Inspeksi:</strong> ${props["Tanggal Inspeksi"] || "-"}<br>
             <strong>Tingkat Risiko:</strong> ${props["RiskLevel"] || "-"}<br>`;
