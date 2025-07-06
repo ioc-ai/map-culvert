@@ -65,7 +65,7 @@ if (document.getElementById('map')) {
 
   // Color mapping for circle marker
   function getColor(level) {
-    switch ((level||'').toLowerCase()) {
+    switch ((RiskLevel||'').toLowerCase()) {
       case 'critical': return '#ff0000'; // red
       case 'high': return '#ff8e00';     // orange
       case 'medium': return '#fff000';   // yellow
@@ -81,7 +81,7 @@ if (document.getElementById('map')) {
     .then(data => {
       const culvertLayer = L.geoJSON(data, {
         pointToLayer: function (feature, latlng) {
-          let lvl = feature.properties?.level || '';
+          let lvl = feature.properties?.RiskLevel || '';
           return L.circleMarker(latlng, {
             radius: 8,
             fillColor: getColor(lvl),
