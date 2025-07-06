@@ -65,7 +65,7 @@ if (document.getElementById('map')) {
 
   // Color mapping for circle marker
   function getColor(level) {
-    switch ((RiskLevel||'').toLowerCase()) {
+    switch ((level||'').toLowerCase()) {
       case 'critical': return '#ff0000'; // red
       case 'high': return '#ff8e00';     // orange
       case 'medium': return '#fff000';   // yellow
