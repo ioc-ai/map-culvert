@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   <link rel="stylesheet" href="style.css">
   <style>
-    #map { height: 90vh; }
+    #map { height: 94vh; }
     .leaflet-control-layers-expanded { max-height: 170px; overflow-y: auto; }
   </style>
 </head>
@@ -16,7 +16,7 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-2">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Culvert Inspections</a>
+      <a class="navbar-brand" href="#">Culvert Inspections Map</a>
       <button class="btn btn-outline-light ms-auto" id="logoutBtn">Logout</button>
     </div>
   </nav>
@@ -24,7 +24,7 @@
     <div id="map"></div>
       <!-- Legend -->
   <div id="legend" class="leaflet-bottom leaflet-right bg-white p-2 rounded shadow" style="position: absolute; z-index: 1000; margin: 18px;">
-    <strong>Legenda RiskLevel:</strong><br>
+    <strong>Tingkat Risiko Culvert</strong><br>
     <div><span class="legend-color" style="background:#d73027"></span> Critical</div>
     <div><span class="legend-color" style="background:#fc8d59"></span> High</div>
     <div><span class="legend-color" style="background:#fee08b"></span> Medium</div>
