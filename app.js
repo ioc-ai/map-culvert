@@ -70,7 +70,7 @@ if (document.getElementById('map')) {
       case 'high': return '#ff8e00';     // orange
       case 'medium': return '#fff000';   // yellow
       case 'low': return '#00ff00';      // green
-      case 'no data': return '#9dc3b6';  // grey
+      case 'no data': return '#464646';  // grey
       default: return '#ffffff';         // fallback grey
     }
   }
@@ -85,7 +85,7 @@ if (document.getElementById('map')) {
           return L.circleMarker(latlng, {
             radius: 10,
             fillColor: getColor(lvl),
-            color: '#222',
+            color: '#fffff',
             weight: 1,
             opacity: 1,
             fillOpacity: 0.9
