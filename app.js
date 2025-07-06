@@ -51,8 +51,8 @@ if (document.getElementById('map')) {
 
   // Map init
   const map = L.map('map', {
-    center: [-2.225, 115.5], // Indonesia center
-    zoom: 10,
+    center: [-2.2, 115.5], // Pusat area data
+    zoom: 13,
     layers: [googleSat]
   });
 
@@ -63,19 +63,19 @@ if (document.getElementById('map')) {
   };
   const overlayMaps = {};
 
-  // Color mapping for circle marker
+  // Color mapping for circle marker, sesuai RiskLevel
   function getColor(level) {
     switch ((level||'').toLowerCase()) {
-      case 'critical': return '#ff0000'; // red
-      case 'high': return '#ff8e00';     // orange
-      case 'medium': return '#fff000';   // yellow
-      case 'low': return '#00ff00';      // green
-      case 'no data': return '#9dc3b6';  // grey
-      default: return '#ffffff';         // fallback grey
+      case 'critical': return '#d73027'; // red
+      case 'high': return '#fc8d59';     // orange
+      case 'medium': return '#fee08b';   // yellow
+      case 'low': return '#1a9850';      // green
+      case 'no data': return '#888888';  // grey
+      default: return '#888888';
     }
   }
 
-  // Load Culverts GeoJSON
+  // Load Culverts GeoJSON dari ./data/culverts_score.geojson
   fetch('./data/culverts_score.geojson')
     .then(resp => resp.json())
     .then(data => {
@@ -83,27 +83,29 @@ if (document.getElementById('map')) {
         pointToLayer: function (feature, latlng) {
           let lvl = feature.properties?.RiskLevel || '';
           return L.circleMarker(latlng, {
-            radius: 8,
+            radius: 10,
             fillColor: getColor(lvl),
-            color: '#ffffff',
-            weight: 2,
+            color: '#222',
+            weight: 1,
             opacity: 1,
             fillOpacity: 0.9
           });
         },
         onEachFeature: function (feature, layer) {
           let props = feature.properties;
-          let html = `<strong>Culvert</strong><br>`;
-          for (let k in props) html += k+': '+props[k]+'<br>';
+          let html = `<strong>ID Culvert:</strong> ${props["ID Culvert"] || "-"}<br>
+            <strong>Mitra Kerja Responsible:</strong> ${props["Mitra Kerja Responsible"] || "-"}<br>
+            <strong>Tanggal Inspeksi:</strong> ${props["Tanggal Inspeksi"] || "-"}<br>
+            <strong>RiskLevel:</strong> ${props["RiskLevel"] || "-"}<br>`;
           layer.bindPopup(html);
         }
       });
       overlayMaps["Culverts"] = culvertLayer;
       culvertLayer.addTo(map);
       L.control.layers(baseMaps, overlayMaps).addTo(map);
-      // Zoom to layer bounds
-      try { map.fitBounds(culvertLayer.getBounds()); } catch(e){}
+      // Zoom to layer bounds jika ada data
+      try { map.fitBounds(culvertLayer.getBounds(), {maxZoom: 16}); } catch(e){}
     }).catch(()=>{
-      alert('Gagal memuat culverts.geojson!');
+      alert('Gagal memuat data culverts_score.geojson!');
     });
 }
