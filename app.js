@@ -85,7 +85,7 @@ if (document.getElementById('map')) {
           return L.circleMarker(latlng, {
             radius: 10,
             fillColor: getColor(lvl),
-            color: '#fffff',
+            color: '#ffffff',
             weight: 1,
             opacity: 1,
             fillOpacity: 0.9
