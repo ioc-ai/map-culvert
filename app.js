@@ -66,12 +66,12 @@ if (document.getElementById('map')) {
   // Color mapping for circle marker, sesuai RiskLevel
   function getColor(level) {
     switch ((level||'').toLowerCase()) {
-      case 'critical': return '#d73027'; // red
-      case 'high': return '#fc8d59';     // orange
-      case 'medium': return '#fee08b';   // yellow
-      case 'low': return '#1a9850';      // green
-      case 'no data': return '#888888';  // grey
-      default: return '#888888';
+      case 'critical': return '#ff0000'; // red
+      case 'high': return '#ff8e00';     // orange
+      case 'medium': return '#fff000';   // yellow
+      case 'low': return '#00ff00';      // green
+      case 'no data': return '#9dc3b6';  // grey
+      default: return '#ffffff';         // fallback grey
     }
   }
 
