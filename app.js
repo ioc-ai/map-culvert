@@ -83,20 +83,20 @@ if (document.getElementById('map')) {
         pointToLayer: function (feature, latlng) {
           let lvl = feature.properties?.RiskLevel || '';
           return L.circleMarker(latlng, {
-            radius: 10,
+            radius: 8,
             fillColor: getColor(lvl),
             color: '#ffffff',
-            weight: 1,
+            weight: 1.4,
             opacity: 1,
-            fillOpacity: 0.9
+            fillOpacity: 0.85
           });
         },
         onEachFeature: function (feature, layer) {
           let props = feature.properties;
-          let html = `<strong>ID Culvert:</strong> ${props["ID Culvert"] || "-"}<br>
-            <strong>Mitra Kerja Responsible:</strong> ${props["Mitra Kerja Responsible"] || "-"}<br>
+          let html = `<strong>ID Culvert:</strong><strong> ${props["ID Culvert"]</strong> || "-"}<br>
+            <strong>Mitra Kerja Penanggungjawab:</strong> ${props["Mitra Kerja Responsible"] || "-"}<br>
             <strong>Tanggal Inspeksi:</strong> ${props["Tanggal Inspeksi"] || "-"}<br>
-            <strong>RiskLevel:</strong> ${props["RiskLevel"] || "-"}<br>`;
+            <strong>Tingkat Risiko:</strong> ${props["RiskLevel"] || "-"}<br>`;
           layer.bindPopup(html);
         }
       });
